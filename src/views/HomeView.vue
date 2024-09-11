@@ -1,16 +1,11 @@
 <template>
   <div class="home w-100 px-3">
-    <PhotoList msg="Welcome "/>
+    <PhotoList />
   </div>
 </template>
 
-<script>
+<script setup>
 import PhotoList from '@/views/listpage/PhotoList.vue';
 
-export default {
-  name: 'HomeView',
-  components: {
-    PhotoList
-  }
-}
+
 </script>
