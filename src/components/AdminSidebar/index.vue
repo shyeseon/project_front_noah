@@ -1,10 +1,10 @@
 <template>
   <nav class="navbar p-0">
-    <div class="container-fluid">
-      <div class="row flex-nowrap">
+ 
+      
 
         <!-- 사이드바 -->
-        <div class="col-auto vh-100 side-bar bg-black">
+        <div class="vh-100 side-bar bg-black">
           <div class="mt-5">
               <h1 class="text-white p-3 border-3 border-top border-bottom">admin</h1>
 
@@ -23,12 +23,9 @@
         </div>
 
         <!-- 메인 콘텐츠 -->
-        <div class="col p-4 right-div">
-          <h1></h1>
-        </div>
-
-      </div>
-    </div>
+        
+    
+   
   </nav>
 </template>
 
@@ -38,6 +35,6 @@
 <style scoped>
 .side-bar {
   min-height: 100vh; /* 최소 높이를 화면 전체로 설정 */
-  width: 250px; /* 사이드바의 고정 너비 설정 */
+  width: 100%;
 }
 </style>
