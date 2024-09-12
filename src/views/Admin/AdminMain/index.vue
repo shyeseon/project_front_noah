@@ -1,13 +1,11 @@
 <template>
     <div class="card">
-        <div class="card-header">Exam</div>
-        <div class="card-body">
-
-        </div>
+      <AdminSidebar></AdminSidebar>
     </div>
 </template>
 
 <script setup>
+import AdminSidebar from '@/components/AdminSidebar'
 </script>
 
 <style scoped>

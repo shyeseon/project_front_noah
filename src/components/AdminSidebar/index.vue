@@ -1,73 +1,43 @@
 <template>
-    <nav class="sidebar">
-      <div class="position-sticky pt-3 ms-4 me-5">
-        <h1 class="h2 mb-5 fw-bold">Minography</h1>
-        <div class="accordion" id="photoProjectsAccordion">
-          <div class="accordion-item border-0">
-            <h2 class="accordion-header" id="headingPhotoProjects">
-              <router-link class="text-decoration-none text-dark" to="/#">
-                <button
-                  class="accordion-button border-0 bg-transparent fw-bold pb-0 ps-3"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapsePhotoProjects"
-                  aria-expanded="true"
-                  aria-controls="collapsePhotoProjects"
-                >
-                  Photo projects
-                </button>
-              </router-link>
-            </h2>
-            <div
-              id="collapsePhotoProjects"
-              class="accordion-collapse collapse show"
-              aria-labelledby="headingPhotoProjects"
-              data-bs-parent="#photoProjectsAccordion"
-            >
-              <div class="accordion-body pt-0 mb-3">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <RouterLink class="nav-link" to="#">Food</RouterLink>
-                  </li>
-                  <li class="nav-item">
-                    <RouterLink class="nav-link" to="#">Model</RouterLink>
-                  </li>
-                  <li class="nav-item">
-                    <RouterLink class="nav-link" to="#">Landscape</RouterLink>
-                  </li>
-                </ul>
-              </div>
-            </div>
+  <nav class="navbar p-0">
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+
+        <!-- 사이드바 -->
+        <div class="col-auto vh-100 side-bar bg-black">
+          <div class="mt-5">
+              <h1 class="text-white p-3 border-3 border-top border-bottom">admin</h1>
+
+              <ul class="navbar-na mt-5">
+              <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Exit</a>
+              </li>
+              <li class="nav-item  mt-5">
+                  <a class="nav-link text-white" href="#">manage Images</a>
+              </li>
+              <li class="nav-item  mt-5">
+                  <a class="nav-link text-white" href="#">manage Category</a>
+              </li>
+              </ul>
           </div>
         </div>
+
+        <!-- 메인 콘텐츠 -->
+        <div class="col p-4 right-div">
+          <h1></h1>
+        </div>
+
       </div>
-    </nav>
-  </template>
-  
-  <script setup></script>
-  
-  <style scoped>
-  
-  .accordion-button {
-    box-shadow: none;
-  }
-  
-  .accordion-button:focus {
-    box-shadow: none;
-  }
-  
-  .accordion-button:not(.collapsed) {
-    color: inherit;
-    background-color: transparent;
-    box-shadow: none; 
-    border-bottom: none; 
-  }
-  
-  .nav-link {
-    color: #000;
-  }
-  
-  .nav-link.active {
-    font-weight: bold;
-  }
-  </style>
+    </div>
+  </nav>
+</template>
+
+<script setup>
+</script>
+
+<style scoped>
+.side-bar {
+  min-height: 100vh; /* 최소 높이를 화면 전체로 설정 */
+  width: 250px; /* 사이드바의 고정 너비 설정 */
+}
+</style>
