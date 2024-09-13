@@ -9,10 +9,10 @@
           <li class="nav-item">
               <a class="nav-link text-white" href="#">Exit</a>
           </li>
-          <li class="nav-item  mt-5">
+          <li class="nav-item mt-5">
               <a class="nav-link text-white" href="#">manage Images</a>
           </li>
-          <li class="nav-item  mt-5">
+          <li class="nav-item mt-5">
               <a class="nav-link text-white" href="#">manage Category</a>
           </li>
           </ul>
@@ -29,4 +29,9 @@
 .side-bar{
   width: 200px;
 }
+ul.navbar-na {
+  list-style: none; /* 점 제거 */
+  padding-left: 0;  /* 기본 패딩 제거 */
+}
+
 </style>
