@@ -1,7 +1,7 @@
 <template>
   <nav class="sidebar">
     <div class="position-sticky pt-3 ms-4 me-5">
-      <h1 class="h2 mb-5 fw-bold">Minography</h1>
+      <h1 class="h2 mb-5 fw-bold"><RouterLink class="text-decoration-none text-dark" to="/">Minography</RouterLink></h1>
       <div class="accordion" id="photoProjectsAccordion">
         <div class="accordion-item border-0">
           <h2 class="accordion-header" id="headingPhotoProjects">
