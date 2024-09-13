@@ -19,7 +19,7 @@
             <h6 class=" ms-4 mb-2 text-start fw-bold">Thumbnail image</h6>
 
             <div class="d-flex justify-content-center">
-              <div class="ms-3 me-3 rounded w-50 h-auto" style="border: 2px dashed #add8e6;">
+              <div class="ms-3 me-3 rounded w-50 h-auto d-flex justify-content-center align-items-center" style="border: 2px dashed #add8e6;">
                 <p>
                   <span class="text-primary" style="text-decoration: underline;">Click to Upload</span> or drag and drop
                 </p>
@@ -81,9 +81,6 @@
             <ImageBox></ImageBox>
             <ImageBox></ImageBox>
             <ImageBox></ImageBox>
-
-            
-
           </div>
         </div>
       </div>
