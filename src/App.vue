@@ -1,6 +1,8 @@
 <template>
+
   <!-- 데스크탑 화면에서는 flex 레이아웃 유지 -->
   <div class="layout-container d-none d-md-flex">
+    
     <Sidebar />
     <router-view />
   </div>
@@ -46,10 +48,12 @@
   <div class="d-md-none">
     <router-view />
   </div>
+
 </template>
 
 <script setup>
 import Sidebar from "@/components/common/side-bar";
+
 </script>
 
 <style scoped>
