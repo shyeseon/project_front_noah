@@ -117,4 +117,10 @@ const max = ref(100);
     height: 2px; /* 선의 두께 설정 */
     background-color: lightgray; /* 색상 설정 */
   }
+
+  select {
+  appearance: auto; /* 기본 화살표를 복원 */
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+}
 </style>
