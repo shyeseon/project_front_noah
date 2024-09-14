@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade" tabindex="-1" >
+  <div class="modal fade" tabindex="-1">
     <div class="modal-dialog border-0 modal-dialog-centered modal-lg  mw-100">
       <div class="modal-content border-0 text-end ">
         <i class="fa-solid fa-x text-white fs-2 me-5" @click="emit('close')"></i>
@@ -38,12 +38,20 @@
 </template>
 
 <script setup>
+import { Modal } from 'bootstrap';
+import { onMounted } from 'vue';
+
 
 const emit=defineEmits(['close']);
-
+onMounted(() => {
+  const modalElement = document.querySelector('.modal');
+});
 </script>
 
 <style scoped>
+
+
+
 .modal-dialog {
   max-width: 80%;
 }

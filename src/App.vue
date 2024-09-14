@@ -19,7 +19,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
->>>>>>> c157550b9a6e846bbe5890442fdf7bdac960a60c
+
   </nav>
 
   <!-- 오프캔버스 사이드바 (모바일 화면에서만 사용) -->

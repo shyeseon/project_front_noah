@@ -1,11 +1,10 @@
 <template>
-    <div class="imgList d-flex" width="1060px">
-        <div class="listSide ">side bar</div>
+    <div class="imgList mt-5">
         <div class="list">
             <div class="text-start fs-2 mb-3 "  >
             <router-link to="/"><i class="fa-solid fa-arrow-left-long text-black"></i></router-link>
             </div>
-            <div class="d-flex align-items-end mb-3">
+            <div class="d-flex align-items-end mb-4">
                 <h2 class="fw-bold mb-0 me-3 ">{{ projectName}}</h2>
                 <h6 class="mb-1"> {{ projectCategory }}</h6>
              </div>
@@ -48,23 +47,23 @@ let projectCategory = ref(listImages.value[0].pc);
 let ImageDetailmodal=null;
 onMounted(()=>{
     ImageDetailmodal = new Modal(document.querySelector("#ImageDetailmodal"));
+
 })
-function modalOpen(){
+
+function modalOpen(){  
+
+    console.log("모달열기")
     ImageDetailmodal.show();
 }
 function closeModal(){
+    console.log("모달 닫기")
     ImageDetailmodal.hide();
 }
 </script>
 
 <style scoped>
 
-.listSide{
-    min-width:15%;
-}
-
 .list{
-    width:85%;
     margin: 0 2.25rem;
 }
 
