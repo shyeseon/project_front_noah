@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar p-0">
+  <nav class="navbar p-0 ">
     <!-- 사이드바 -->
-    <div class="vh-100 side-bar bg-black ">
-      <div class="mt-5">
+    <div class="vh-100 side-bar bg-black text-center">
+      <div class="mt-5 ">
           <h1 class="text-white p-3 border-3 border-top border-bottom">admin</h1>
 
           <ul class="navbar-na mt-5">
