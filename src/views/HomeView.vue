@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import PhotoList from '@/views/ListPage/PhotoList.vue';
+import PhotoList from '@/views/listpage/PhotoList.vue';
 import { useRouter } from 'vue-router';
 
 const router= useRouter();
