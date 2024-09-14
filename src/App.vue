@@ -1,29 +1,72 @@
 <template>
-  <div>
-    <router-view/>
+
+  <!-- 데스크탑 화면에서는 flex 레이아웃 유지 -->
+  <div class="layout-container d-none d-md-flex">
+    
+    <Sidebar />
+    <router-view />
+  </div>
+
+  <!-- 모바일 화면에서는 상단에 Minography 제목과 햄버거 버튼 표시 -->
+  <nav class="navbar d-md-none navbar-light bg-light">
+    <div class="container-fluid">
+      <h1 class="navbar-brand mb-0 h1 fw-bold">Minography</h1>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasSidebar"
+        aria-controls="offcanvasSidebar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 오프캔버스 사이드바 (모바일 화면에서만 사용) -->
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasSidebar"
+    aria-labelledby="offcanvasSidebarLabel"
+  >
+    <div class="offcanvas-header">
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <Sidebar />
+    </div>
+  </div>
+  
+  <!-- 모바일 화면에서도 콘텐츠가 표시되도록 router-view -->
+  <div class="d-md-none">
+    <router-view />
   </div>
 
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script setup>
+import Sidebar from "@/components/common/side-bar";
+
+</script>
+
+<style scoped>
+.layout-container {
+  display: flex;
 }
 
-nav {
-  padding: 30px;
-}
+@media screen and (max-width: 768px) {
+  .layout-container {
+    display: block;
+  }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+  .offcanvas {
+    width: 250px;
+  }
 }
 </style>
