@@ -8,12 +8,12 @@ import Image from "./Image"
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "Home",
     component: HomeView,
   },
   {
-    path: "/about",
-    name: "about",
+    path: "/About",
+    name: "About",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -23,8 +23,8 @@ const routes = [
   ...admin,
 
   {
-    path: "/contact",
-    name: "contact",
+    path: "/Contact",
+    name: "Contact",
     // route level code-splitting
     // this generates a separate chunk (contact.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
