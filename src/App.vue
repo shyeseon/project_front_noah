@@ -3,7 +3,7 @@
   <!-- 데스크탑 화면에서는 flex 레이아웃 유지 -->
   <div class="layout-container d-none d-md-flex">
     
-    <Sidebar />
+    <!-- <Sidebar /> -->
     <router-view />
   </div>
 

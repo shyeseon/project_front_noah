@@ -10,10 +10,10 @@
             <a class="nav-link text-white" href="#">Exit</a>
           </li>
           <li class="nav-item mt-5">
-            <a class="nav-link text-white" href="#">manage Images</a>
+            <a class="nav-link text-white" href="../../Admin/ManageImages">manage Images</a>
           </li>
           <li class="nav-item mt-5">
-            <a class="nav-link text-white" href="#">manage Category</a>
+            <a class="nav-link text-white" href="../../Admin/ManageCategory">manage Category</a>
           </li>
         </ul>
       </div>
