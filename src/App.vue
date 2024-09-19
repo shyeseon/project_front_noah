@@ -1,9 +1,9 @@
 <template>
-
   <!-- 데스크탑 화면에서는 flex 레이아웃 유지 -->
   <div class="layout-container d-none d-md-flex">
-    
-    <!-- <Sidebar /> -->
+    <div v-if="!check">
+      <Sidebar />
+    </div>
     <router-view />
   </div>
 
@@ -21,7 +21,6 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
-
   </nav>
 
   <!-- 오프캔버스 사이드바 (모바일 화면에서만 사용) -->
@@ -40,19 +39,24 @@
       ></button>
     </div>
     <div class="offcanvas-body">
-      <Sidebar />
+      <div v-if="!check">
+        <Sidebar />
+      </div>
     </div>
   </div>
-  
+
   <!-- 모바일 화면에서도 콘텐츠가 표시되도록 router-view -->
   <div class="d-md-none">
     <router-view />
   </div>
-
 </template>
 
 <script setup>
-import Sidebar from "@/components/common/side-bar";
+import { ref, watch } from "vue";
+import Sidebar from "@/components/common/MainPageSidebar";
+
+const check = ref(false);
+const url = ref("");
 
 </script>
 
