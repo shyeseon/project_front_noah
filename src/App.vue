@@ -1,9 +1,8 @@
 <template>
   <!-- 데스크탑 화면에서는 flex 레이아웃 유지 -->
   <div class="layout-container d-none d-md-flex">
-    <div v-if="!check">
-      <Sidebar />
-    </div>
+    <Sidebar v-if="!check" />
+    <AdminSidebar v-if="check"/>
     <router-view />
   </div>
 
@@ -39,9 +38,8 @@
       ></button>
     </div>
     <div class="offcanvas-body">
-      <div v-if="!check">
-        <Sidebar />
-      </div>
+      <Sidebar v-if="!check" />
+      <AdminSidebar v-if="check" />
     </div>
   </div>
 
@@ -54,10 +52,23 @@
 <script setup>
 import { ref, watch } from "vue";
 import Sidebar from "@/components/common/MainPageSidebar";
+import AdminSidebar from "@/components/AdminSidebar";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
 const check = ref(false);
 const url = ref("");
 
+watch(
+  () => (url.value = route.path),
+  (newUrl) => {
+    if (newUrl.includes("/Admin")) {
+      check.value = true;
+    } else {
+      check.value = false;
+    }
+  }
+);
 </script>
 
 <style scoped>

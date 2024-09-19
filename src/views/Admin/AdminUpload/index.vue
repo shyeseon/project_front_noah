@@ -102,7 +102,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import AdminSidebar from '@/components/AdminSidebar';
 
 const projectName = ref('');
 const category = ref('');
