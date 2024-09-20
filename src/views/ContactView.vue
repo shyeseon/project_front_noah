@@ -9,16 +9,16 @@
           />
         </div>
         <div class="col-md-5">
-          <form>
+          <form ref="form" @submit.prevent="sendEmail">
             <h5 class="text-muted mb-4 mt-2">CONTACT</h5>
-            <div class="mb-3">
-              <input type="text" class="form-control border-0 border-bottom border-dark ps-0 rounded-0" placeholder="name*" required />
+            <div class="mb-4">
+              <input type="text" name="from_name" class="form-control border-0 border-bottom border-dark ps-0 rounded-0" placeholder="name*" required />
             </div>
-            <div class="mb-3">
-              <input type="email" class="form-control border-0 border-bottom border-dark ps-0 rounded-0" placeholder="email*" required />
+            <div class="mb-4">
+              <input type="email" name="from_email" class="form-control border-0 border-bottom border-dark ps-0 rounded-0" placeholder="email*" required />
             </div>
-            <div class="mb-3">
-              <textarea class="form-control border-0 border-bottom border-dark ps-0 rounded-0" placeholder="message*" rows="3" required></textarea>
+            <div class="mb-5">
+              <textarea name="message" class="form-control border-0 border-bottom border-dark ps-0 rounded-0" placeholder="message*" rows="3" required></textarea>
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-outline-dark px-4">
@@ -32,7 +32,25 @@
   </template>
   
   <script setup>
-  // 컴포넌트 로직이 필요한 경우 여기에 추가
+  import emailjs from '@emailjs/browser';
+  import { ref } from 'vue';
+
+  const form = ref(null);
+
+  const sendEmail = () => {
+    emailjs.sendForm('service_nr04731', 'template_brdk4ii', form.value, {
+          publicKey: 'naKp_jmgiUrgnLWrV',
+        })
+        .then(
+          () => {
+            console.log('sending email is SUCCESS!');
+          },
+          (error) => {
+            console.log('sending email is FAILED...', error.text);
+          },
+        );
+  };
+
   </script>
   
   <style scoped>
