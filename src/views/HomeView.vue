@@ -10,7 +10,7 @@ import { useRouter } from 'vue-router';
 
 const router= useRouter();
 function linkToDetail(){
-  router.push("./ImageDetailPage/DetailList.vue")
+  router.push("./ListPage/DetailList.vue")
 }
 </script>
 

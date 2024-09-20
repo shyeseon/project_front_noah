@@ -1,8 +1,8 @@
 const routes = [
     {         
-        path: '/ImageDetailPage/DetailList.vue',
+        path: '/ListPage/DetailList.vue',
         name: 'DetailList',
-        component: () =>  import(/* webpackChunkName: "Member" */ '@/views/ImageDetailPage/DetailList.vue')
+        component: () =>  import(/* webpackChunkName: "Member" */ '@/views/ListPage/DetailList.vue')
     },
 
   
