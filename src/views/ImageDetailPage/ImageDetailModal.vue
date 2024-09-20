@@ -3,28 +3,28 @@
     <div class="modal-dialog border-0 modal-dialog-centered modal-lg  mw-100">
       <div class="modal-content border-0 text-end ">
         <i class="fa-solid fa-x text-white fs-2 me-5" @click="emit('close')"></i>
+
         <div class="modal-body p-0">
-          <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+          <!-- 캐러셀을 닫았다가 다시 열 때 작동하지 않는 문제를 방지하기 위해 새로운 열 때 캐러셀을 리렌더링 -->
+          <div id="imageCarousel" class="carousel slide" :key="currentIndex" data-bs-ride="carousel" >
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="/Images/street img1.JPG" class="d-block w-100" alt="Street image">
+              <div class="carousel-item" :class="{ active: index === currentIndex }" v-for="(image, index) in props.objectProp" :key="index">
+                <img :src="image.src" :alt="image.alt"  class="d-block w-100" 
+                :style="{ transform: `scale(${zoom})`, transition: 'transform 0.2s'}"
+                  @wheel.prevent="handleZoom">       
               </div>
-              <div class="carousel-item ">
-                <img src="/Images/street img2.JPG" class="d-block w-100" alt="Street image">
-              </div>
-              <div class="carousel-item ">
-                <img src="/Images/street img3.JPG" class="d-block w-100" alt="Street image">
-              </div>
-              <!-- Add more carousel items as needed -->
             </div>
+
             <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"  data-bs-slide="prev">
               <i class="fa-solid fa-angle-left fs-1 fw-bold"></i>
               <span class="visually-hidden">Prev</span>
             </button>
+
             <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
               <i class="fa-solid fa-chevron-right fs-1 fw-bold"></i>
               <span class="visually-hidden">Next</span>
             </button>
+
           </div>
         </div>
         <div class="modal-footer justify-content-center border-0">
@@ -38,14 +38,31 @@
 </template>
 
 <script setup>
-import { Modal } from 'bootstrap';
-import { onMounted } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 
 
 const emit=defineEmits(['close']);
 onMounted(() => {
   const modalElement = document.querySelector('.modal');
 });
+const zoom=ref(1);
+
+const props = defineProps(['objectProp','selectedIndex']);
+const currentIndex = ref(props.selectedIndex);
+
+
+const handleZoom = (event)=>{
+  const zoomSpeed = 0.1;
+  const zoomDirection = event.deltaY > 0 ? -1 : 1;
+  zoom.value = Math.max(1, Math.min(3, zoom.value + zoomDirection * zoomSpeed));
+}
+
+watch(() => props.selectedIndex, (newValue) => {
+  currentIndex.value = newValue;
+  zoom.value=1;
+
+});
+
 </script>
 
 <style scoped>
@@ -61,6 +78,7 @@ onMounted(() => {
 .carousel-item img {
   object-fit: contain;
   height: 80vh;
+  cursor: zoom-in;
 }
 .modal{
   backdrop-filter:brightness(0.5) ;
