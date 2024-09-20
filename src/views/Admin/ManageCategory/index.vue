@@ -1,7 +1,5 @@
 <template>
   <div class="admin-container d-flex container-fluid p-0">
-    <AdminSidebar />
-
     <div class="admin-content flex-grow-1">
       <div class="manage-category">
         <h3 class="bg-dark text-white p-3 ps-4 mb-4 fw-bold">
@@ -237,7 +235,6 @@
 </template>
 
 <script setup>
-import AdminSidebar from "@/components/AdminSidebar";
 </script>
 
 <style scoped>

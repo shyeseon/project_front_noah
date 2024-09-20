@@ -1,9 +1,8 @@
 <template>
-
   <!-- 데스크탑 화면에서는 flex 레이아웃 유지 -->
   <div class="layout-container d-none d-md-flex">
-    
-    <!-- <Sidebar /> -->
+    <Sidebar v-if="!check" />
+    <AdminSidebar v-if="check"/>
     <router-view />
   </div>
 
@@ -21,7 +20,6 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
-
   </nav>
 
   <!-- 오프캔버스 사이드바 (모바일 화면에서만 사용) -->
@@ -40,20 +38,37 @@
       ></button>
     </div>
     <div class="offcanvas-body">
-      <Sidebar />
+      <Sidebar v-if="!check" />
+      <AdminSidebar v-if="check" />
     </div>
   </div>
-  
+
   <!-- 모바일 화면에서도 콘텐츠가 표시되도록 router-view -->
   <div class="d-md-none">
     <router-view />
   </div>
-
 </template>
 
 <script setup>
-import Sidebar from "@/components/common/side-bar";
+import { ref, watch } from "vue";
+import Sidebar from "@/components/common/MainPageSidebar";
+import AdminSidebar from "@/components/AdminSidebar";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
+const check = ref(false);
+const url = ref("");
+
+watch(
+  () => (url.value = route.path),
+  (newUrl) => {
+    if (newUrl.includes("/Admin")) {
+      check.value = true;
+    } else {
+      check.value = false;
+    }
+  }
+);
 </script>
 
 <style scoped>

@@ -5,10 +5,6 @@ const routes = [
     },
 
     {
-        path: '/Admin/AdminMain',
-        component: () => import (/* webpackChunkName: "Admin" */ '@/views/Admin/AdminMain')
-    },
-    {
       path: "/Admin/Login",
       component: () =>
         import(/* webpackChunkName: "Admin" */ "@/views/Admin/Login"),
