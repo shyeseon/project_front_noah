@@ -9,9 +9,10 @@
           <div id="imageCarousel" class="carousel slide" :key="currentIndex" data-bs-ride="carousel" >
             <div class="carousel-inner">
               <div class="carousel-item" :class="{ active: index === currentIndex }" v-for="(image, index) in props.objectProp" :key="index">
-                <img :src="image.src" :alt="image.alt"  class="d-block w-100" 
-                :style="{ transform: `scale(${zoom})`, transition: 'transform 0.2s'}"
-                  @wheel.prevent="handleZoom">       
+                <img :src="image.src" :alt="image.alt"  class="d-block w-100 detailImage" 
+                
+                  @click="handleZoom(index)"
+                  @dblclick="zoomReset(index)">       
               </div>
             </div>
 
@@ -45,22 +46,29 @@ const emit=defineEmits(['close']);
 onMounted(() => {
   const modalElement = document.querySelector('.modal');
 });
-const zoom=ref(1);
 
 const props = defineProps(['objectProp','selectedIndex']);
 const currentIndex = ref(props.selectedIndex);
 
-
-const handleZoom = (event)=>{
-  const zoomSpeed = 0.1;
-  const zoomDirection = event.deltaY > 0 ? -1 : 1;
-  zoom.value = Math.max(1, Math.min(3, zoom.value + zoomDirection * zoomSpeed));
+let nowZoom = 100;
+function handleZoom(index) {
+	nowZoom = nowZoom + 30;
+  
+  if(nowZoom >= 150){
+    nowZoom = 150;
+  }
+zooms(index);
+  }
+function zoomReset(index){
+    nowZoom = 100;
+    zooms(index);
+  }
+function zooms(index){
+  let elements = document.querySelectorAll(".carousel-item"); 
+  elements[index].style.zoom = nowZoom + "%"; 
 }
-
 watch(() => props.selectedIndex, (newValue) => {
   currentIndex.value = newValue;
-  zoom.value=1;
-
 });
 
 </script>

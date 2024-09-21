@@ -3,7 +3,7 @@
     <h2 class="h4 mb-5 mt-4">Models / Automobiles /</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
       <div v-for="photo in photos" :key="photo.id" class="col">
-        <RouterLink to="#" class="card h-100 border-0 text-decoration-none">
+        <RouterLink :to="`./ListPage/DetailList.vue?id=${photo.id}`" class="card h-100 border-0 text-decoration-none">
           <img :src="photo.src" class="card-img-top" :alt="photo.title" />
           <div class="card-body ps-0">
             <h5 class="card-title fw-bolder">{{ photo.title }}</h5>
