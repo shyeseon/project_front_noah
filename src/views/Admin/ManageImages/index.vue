@@ -12,44 +12,44 @@
           <table class="table table-hover text-center align-middle mt-4">
             <thead>
               <tr>
-                <th @click="sort('no')" class="category">
+                <th @click="sort('no')" class="category col-md-1">
                   No
                   <span v-if="currentSort === 'no'">{{
                     currentSortDir === "asc" ? "↑" : "↓"
                   }}</span>
                 </th>
                 <th class="thumbnail">Thumbnail</th>
-                <th @click="sort('projectName')" class="category">
+                <th @click="sort('projectName')" class="category col-md-3 text-center">
                   Project name
                   <span v-show="currentSort === 'projectName'">{{
                     currentSortDir === "asc" ? "↑" : "↓"
                   }}</span>
                 </th>
-                <th @click="sort('category')" class="category">
+                <th @click="sort('category')" class="category  col-md-2 text-center">
                   Category
                   <span v-if="currentSort === 'category'">{{
                     currentSortDir === "asc" ? "↑" : "↓"
                   }}</span>
                 </th>
-                <th @click="sort('date')" class="category">
+                <th @click="sort('date')" class="category col-md-1">
                   Date
                   <span v-if="currentSort === 'date'">{{
                     currentSortDir === "asc" ? "↑" : "↓"
                   }}</span>
                 </th>
-                <th @click="sort('images')" class="category">
+                <th @click="sort('images')" class="category col-md-1">
                   Images
                   <span v-if="currentSort === 'images'">{{
                     currentSortDir === "asc" ? "↑" : "↓"
                   }}</span>
                 </th>
-                <th @click="sort('views')" class="category">
+                <th @click="sort('views')" class="category col-md-1">
                   Views
                   <span v-if="currentSort === 'views'">{{
                     currentSortDir === "asc" ? "↑" : "↓"
                   }}</span>
                 </th>
-                <th></th>
+                <th class="col-md-2"></th>
               </tr>
             </thead>
             <tbody>
@@ -129,7 +129,7 @@
               type="button"
               class="btn btn-danger"
               data-bs-dismiss="modal"
-              @click="clickDeleteModal"
+              @click="clickDeleteConfirmModal"
             >
               Delete
             </button>
@@ -214,7 +214,7 @@ function clickEdit(index) {
 function clickDelete(index) {
   currentItemNo.value = index;
 }
-function clickDeleteModal() {
+function clickDeleteConfirmModal() {
   console.log("삭제하려는 프로젝트 값: " + currentItemNo.value);
 
   //axios 통신 코드 작성 자리
