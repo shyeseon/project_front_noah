@@ -54,7 +54,7 @@
             </thead>
             <tbody>
               <tr v-for="(item, index) in sortedItems" :key="index">
-                <td>{{ item.no }}</td>
+                <td class="pe-none">{{ item.no }}</td>
                 <td>
                   <img
                     :src="item.thumbnail"
@@ -63,12 +63,12 @@
                   />
                 </td>
                 <td>
-                  <span class="underline-text">{{ item.projectName }}</span>
+                  <span class="underline-text pe-none">{{ item.projectName }}</span>
                 </td>
-                <td>{{ item.category }}</td>
-                <td>{{ item.date }}</td>
-                <td>+{{ item.images }}</td>
-                <td>{{ item.views }}</td>
+                <td class="pe-none">{{ item.category }}</td>
+                <td class="pe-none">{{ item.date }}</td>
+                <td class="pe-none">+{{ item.images }}</td>
+                <td class="pe-none">{{ item.views }}</td>
                 <td>
                   <div
                     class="d-flex flex-column justify-content-center align-items-center"
