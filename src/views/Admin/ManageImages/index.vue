@@ -2,7 +2,7 @@
   <div class="admin-container d-flex container-fluid p-0">
     <div class="admin-content flex-grow-1">
       <div class="manage-category">
-        <h3 class="bg-dark text-white p-3 ps-4 mb-4 fw-bold">Manage Images</h3>
+        <h3 class="bg-dark text-white p-3 ps-4 mb-4 fw-bold pe-none">Manage Images</h3>
         <div class="manage-image-padding">
           <div class="d-flex justify-content-end align-items-center">
             <RouterLink class="btn btn-primary" to="/Admin/AdminUpload"

@@ -26,4 +26,25 @@
   </nav>
 </template>
 <script setup></script>
-<style scoped></style>
+<style scoped>
+
+.page-link {
+  color: #999; 
+  background-color: #000;
+  border-color: #444;
+}
+
+.page-item.active .page-link {
+ z-index: 1;
+ color: #ccc;
+ font-weight:bold;
+ background-color: #333;
+  border-color: #444;
+ 
+}
+
+.page-link:focus, .page-link:hover {
+  color: #ccc;
+  background-color: #222; 
+  border-color: #444;
+}</style>
