@@ -3,7 +3,7 @@
     <div class="admin-content flex-grow-1">
       <div class="manage-category">
         <h3 class="bg-dark text-white p-3 ps-4 mb-4 fw-bold">
-          manage Category
+          Manage Category
         </h3>
         <div class="container-fluid content-wrapper">
           <!-- 실제 콘텐츠가 포함된 row -->
