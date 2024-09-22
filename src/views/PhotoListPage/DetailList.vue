@@ -54,8 +54,10 @@
   const isMobile = computed(() => window.innerWidth <= 768); // 모바일 화면 감지
   const showSwiperModal = ref(false); // Swiper 모달 상태
   const currentSlideIndex = ref(0); // Swiper에서 현재 열려 있는 슬라이드 인덱스
-  
+  let imgElement = null;
   onMounted(() => {
+    imgElement = document.querySelector('#infinite-list');
+    
     if (!isMobile.value) {
       ImageDetailmodal = new Modal(document.querySelector("#ImageDetailmodal"));
       preloadImages();
