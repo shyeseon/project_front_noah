@@ -2,26 +2,25 @@
   <div class="modal fade" tabindex="-1">
     <div class="modal-dialog border-0 modal-dialog-centered modal-lg  mw-100">
       <div class="modal-content border-0 text-end ">
-        <i class="fa-solid fa-x text-white fs-2 me-5" @click="emit('close')"></i>
+        <i class="fa-solid fa-x text-white fs-2 me-5 closeBtn" @click="emit('close')"></i>
 
         <div class="modal-body p-0">
           <!-- 캐러셀을 닫았다가 다시 열 때 작동하지 않는 문제를 방지하기 위해 새로운 열 때 캐러셀을 리렌더링 -->
-          <div id="imageCarousel" class="carousel slide" :key="currentIndex" data-bs-ride="carousel" >
+          <div id="imageCarousel" class="carousel slide" :key="currentIndex"  data-bs-ride="true" >
             <div class="carousel-inner">
               <div class="carousel-item" :class="{ active: index === currentIndex }" v-for="(image, index) in props.objectProp" :key="index">
                 <img :src="image.src" :alt="image.alt"  class="d-block w-100 detailImage" 
-                
                   @click="handleZoom(index)"
-                  @dblclick="zoomReset(index)">       
+                  >       
               </div>
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"  data-bs-slide="prev">
+            <button class="carousel-control-prev prevIcon"  type="button" data-bs-target="#imageCarousel"  data-bs-slide="prev">
               <i class="fa-solid fa-angle-left fs-1 fw-bold"></i>
               <span class="visually-hidden">Prev</span>
             </button>
 
-            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+            <button class="carousel-control-next nextIcon"  type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
               <i class="fa-solid fa-chevron-right fs-1 fw-bold"></i>
               <span class="visually-hidden">Next</span>
             </button>
@@ -39,34 +38,47 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from 'vue';
+import {  onMounted, ref, watch } from 'vue';
 
+let ModalClose=null;
+let nextIcon=null;
+let prevIcon=null;
+onMounted(() => {
+  ModalClose = document.querySelector(".closeBtn");
+  ModalClose.addEventListener("click", CarouselReset);
+
+});
 
 const emit=defineEmits(['close']);
-onMounted(() => {
-  const modalElement = document.querySelector('.modal');
-});
 
 const props = defineProps(['objectProp','selectedIndex']);
 const currentIndex = ref(props.selectedIndex);
 
+
 let nowZoom = 100;
-function handleZoom(index) {
-	nowZoom = nowZoom + 30;
-  
-  if(nowZoom >= 150){
-    nowZoom = 150;
-  }
-zooms(index);
-  }
-function zoomReset(index){
+let magnify = ref(false);
+
+function handleZoom(index){
+  let elements = document.querySelectorAll(".detailImage"); 
+  if(!magnify.value){
+    nowZoom = nowZoom + 50;
+    magnify.value=!magnify.value;
+  }else{
     nowZoom = 100;
-    zooms(index);
+    magnify.value=!magnify.value;
   }
-function zooms(index){
-  let elements = document.querySelectorAll(".carousel-item"); 
   elements[index].style.zoom = nowZoom + "%"; 
 }
+
+function CarouselReset(){
+  nowZoom = 100;
+  magnify.value = false;
+  let elements = document.querySelectorAll(".detailImage");
+  elements.forEach(element => {
+    element.style.zoom = "100%";
+  });
+}
+
 watch(() => props.selectedIndex, (newValue) => {
   currentIndex.value = newValue;
 });
