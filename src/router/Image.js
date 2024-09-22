@@ -1,6 +1,6 @@
 const routes = [
     {         
-        path: '/ImageDetailPage/DetailList.vue',
+        path: '/ListPage/DetailList.vue',
         name: 'DetailList',
         component: () =>  import(/* webpackChunkName: "Member" */ '@/views/PhotoListPage/DetailList.vue')
     },
