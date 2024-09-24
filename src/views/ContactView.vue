@@ -18,6 +18,9 @@
             <div class="mb-4">
               <input type="email" name="from_email" class="form-control border-0 border-bottom border-dark ps-0 rounded-0" placeholder="email*" required
               v-model="userInfo.email" />
+              <small v-if="!isUserEmailValid && userInfo.email" class="text-danger">
+              Invalid email format
+            </small>
             </div>
             <div class="mb-5">
               <textarea name="message" class="form-control border-0 border-bottom border-dark ps-0 rounded-0" placeholder="message*" rows="3" required
