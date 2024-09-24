@@ -2,7 +2,7 @@
   <div class="admin-container d-flex container-fluid p-0">
     <div class="admin-content flex-grow-1">
       <div class="manage-category">
-        <h3 class="bg-dark text-white p-3 ps-4 mb-4 fw-bold pe-none">Manage Images</h3>
+        <h3 class="bg-dark text-white p-3 ps-4 mb-4 fw-bold pe-none">Manage Proejects</h3>
         <div class="manage-image-padding">
           <div class="d-flex justify-content-end align-items-center">
             <RouterLink class="btn btn-primary" to="/Admin/AdminUpload"
@@ -154,7 +154,7 @@ const items = ref([
     no: 41,
     thumbnail:
       "https://www.summahealth.org/-/media/project/summahealth/website/page-content/flourish/2_18a_fl_fastfood_400x400.webp?la=en&h=400&w=400&hash=145DC0CF6234A159261389F18A36742A",
-    projectName: "프로젝트 이름1",
+    projectName: "프로젝트 이름21",
     category: "Food",
     date: "2022.12.03",
     images: 7,
