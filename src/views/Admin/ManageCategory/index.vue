@@ -2,224 +2,54 @@
   <div class="admin-container d-flex container-fluid p-0">
     <div class="admin-content flex-grow-1">
       <div class="manage-category">
-        <h3 class="bg-dark text-white p-3 ps-4 mb-4 fw-bold">
-          manage Category
+        <h3 class="bg-dark text-white p-3 ps-4 mb-4 fw-bold pe-none">
+          Manage Category
         </h3>
         <div class="container-fluid content-wrapper">
-          <!-- 실제 콘텐츠가 포함된 row -->
           <div class="row gx-5">
-            <!-- Category 제목 -->
             <div class="col-md-4">
-              <h3 class="fw-bold mb-4 category-title">Category</h3>
+              <h3 class="fw-bold mb-4 category-title pe-none">Category</h3>
             </div>
-            <!-- 첫 번째 컬럼을 위한 빈 공간 -->
             <div class="col-md-4"></div>
-            <!-- 두 번째 컬럼을 위한 빈 공간 -->
             <div class="col-md-4"></div>
           </div>
-          
+
           <div class="row gx-5 mt-4">
-            <!-- 첫 번째 컬럼 -->
             <div class="col-md-4 custom-border">
               <div class="mx-auto w-100">
                 <div class="card bg-dark text-white mb-3 custom-card">
                   <div
                     class="card-body d-flex justify-content-between align-items-center"
                   >
-                    <span>Photo</span>
+                    <span class="pe-none">Photo</span>
                     <button class="btn text-secondary p-0">•••</button>
                   </div>
                 </div>
               </div>
             </div>
-
-            <!-- 두 번째 컬럼 -->
             <div class="col-md-4 custom-border">
-              <div class="mx-auto w-100">
-                <!-- 첫 번째 카드 -->
-                <div class="card bg-dark text-white mb-3 custom-card">
-                  <div
-                    class="card-body d-flex justify-content-between ps-2 align-items-center"
-                  >
-                    <!-- 첫 번째 그룹 시작 -->
-                    <div class="d-flex align-items-center">
-                      <button class="btn p-0 me-2">
-                        <svg
-                          width="15"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="gray"
-                        >
-                          <circle cx="8" cy="6" r="2"></circle>
-                          <circle cx="8" cy="14" r="2"></circle>
-                          <circle cx="12.2" cy="4" r="2"></circle>
-                          <circle cx="12.2" cy="10" r="2"></circle>
-                          <circle cx="12.2" cy="16" r="2"></circle>
-                        </svg>
-                      </button>
-                      <span>Clothing</span>
-                    </div>
-                    <!-- 첫 번째 그룹 끝 -->
-                    <!-- 두 번째 버튼 -->
-                    <button class="btn p-0 text-secondary">•••</button>
-                  </div>
-                </div>
-                <!-- 두 번째 카드 -->
-                <div class="card mb-3 custom-card">
-                  <div
-                    class="card-body d-flex justify-content-between ps-2 align-items-center"
-                  >
-                    <div class="d-flex align-items-center">
-                      <button class="btn p-0 me-2">
-                        <svg
-                          width="15"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="gray"
-                        >
-                          <circle cx="8" cy="6" r="2"></circle>
-                          <circle cx="8" cy="14" r="2"></circle>
-                          <circle cx="12.2" cy="4" r="2"></circle>
-                          <circle cx="12.2" cy="10" r="2"></circle>
-                          <circle cx="12.2" cy="16" r="2"></circle>
-                        </svg>
-                      </button>
-                      <span>Furniture</span>
-                    </div>
-                    <button class="btn p-0 text-secondary">•••</button>
-                  </div>
-                </div>
-                <!-- 세 번째 카드 -->
-                <div class="card mb-3 custom-card">
-                  <div
-                    class="card-body d-flex justify-content-between ps-2 align-items-center"
-                  >
-                    <div class="d-flex align-items-center">
-                      <button class="btn p-0 me-2">
-                        <svg
-                          width="15"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="gray"
-                        >
-                          <circle cx="8" cy="6" r="2"></circle>
-                          <circle cx="8" cy="14" r="2"></circle>
-                          <circle cx="12.2" cy="4" r="2"></circle>
-                          <circle cx="12.2" cy="10" r="2"></circle>
-                          <circle cx="12.2" cy="16" r="2"></circle>
-                        </svg>
-                      </button>
-                      <span>Electronics</span>
-                    </div>
-                    <button class="btn p-0 text-secondary">•••</button>
-                  </div>
-                </div>
-                <!-- 새로운 카테고리 추가 -->
-                <div class="mb-3">
-                  <div>
-                    <span>+ </span>
-                    <span class="text-decoration-underline">New Category</span>
-                  </div>
-                </div>
-              </div>
+              <CategoryList
+                :categories="categories"
+                :selectedCategory="selectedCategory"
+                @selectCategory="selectCategory"
+                @addCategory="addCategory"
+                @updateCategory="updateCategory"
+                @deleteCategory="confirmDeleteCategory"
+                @moveCategory="moveCategory"
+              />
             </div>
 
-            <!-- 세 번째 컬럼 -->
-            <div class="col-md-4">
-              <div class="mx-auto w-100">
-                <!-- 첫 번째 카드 -->
-                <div class="card bg-dark text-white mb-3 custom-card">
-                  <div
-                    class="card-body d-flex justify-content-between ps-2 align-items-center"
-                  >
-                    <!-- 첫 번째 그룹 시작 -->
-                    <div class="d-flex align-items-center">
-                      <button class="btn p-0 me-2">
-                        <svg
-                          width="15"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="gray"
-                        >
-                          <circle cx="8" cy="6" r="2"></circle>
-                          <circle cx="8" cy="14" r="2"></circle>
-                          <circle cx="12.2" cy="4" r="2"></circle>
-                          <circle cx="12.2" cy="10" r="2"></circle>
-                          <circle cx="12.2" cy="16" r="2"></circle>
-                        </svg>
-                      </button>
-                      <span>Footwear</span>
-                    </div>
-                    <!-- 첫 번째 그룹 끝 -->
-                    <!-- 두 번째 버튼 -->
-                    <button class="btn p-0 text-secondary">•••</button>
-                  </div>
-                </div>
-                <!-- 두 번째 카드 -->
-                <div class="card mb-3 custom-card">
-                  <div
-                    class="card-body d-flex justify-content-between ps-2 align-items-center"
-                  >
-                    <div class="d-flex align-items-center">
-                      <button class="btn p-0 me-2">
-                        <svg
-                          width="15"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="gray"
-                        >
-                          <circle cx="8" cy="6" r="2"></circle>
-                          <circle cx="8" cy="14" r="2"></circle>
-                          <circle cx="12.2" cy="4" r="2"></circle>
-                          <circle cx="12.2" cy="10" r="2"></circle>
-                          <circle cx="12.2" cy="16" r="2"></circle>
-                        </svg>
-                      </button>
-                      <span>Tops</span>
-                    </div>
-                    <button class="btn p-0 text-secondary">•••</button>
-                  </div>
-                </div>
-                <!-- 세 번째 카드 -->
-                <div class="card mb-3 custom-card">
-                  <div
-                    class="card-body d-flex justify-content-between ps-2 align-items-center"
-                  >
-                    <div class="d-flex align-items-center">
-                      <button class="btn p-0 me-2">
-                        <svg
-                          width="15"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="gray"
-                        >
-                          <circle cx="8" cy="6" r="2"></circle>
-                          <circle cx="8" cy="14" r="2"></circle>
-                          <circle cx="12.2" cy="4" r="2"></circle>
-                          <circle cx="12.2" cy="10" r="2"></circle>
-                          <circle cx="12.2" cy="16" r="2"></circle>
-                        </svg>
-                      </button>
-                      <span>Bottoms</span>
-                    </div>
-                    <button class="btn p-0 text-secondary">•••</button>
-                  </div>
-                </div>
-                <!-- 새로운 서브카테고리 추가 -->
-                <div class="mb-3">
-                  <div>
-                    <span>+ </span>
-                    <span class="text-decoration-underline"
-                      >New Sub-category</span
-                    >
-                  </div>
-                </div>
-              </div>
+            <div class="col-md-4 custom-border">
+              <SubCategoryList
+                :category="selectedCategory"
+                @addSubCategory="addSubCategory"
+                @updateSubCategory="updateSubCategory"
+                @deleteSubCategory="confirmDeleteSubCategory"
+                @moveSubCategory="moveSubCategory"
+              />
             </div>
           </div>
-          <!-- row 종료 -->
 
-          <!-- 버튼 그룹 - 새로운 row로 분리 -->
           <div class="row button-group">
             <div class="col-12 d-flex justify-content-end">
               <button class="btn btn-choice btn-primary me-2">Save</button>
@@ -231,10 +61,185 @@
         </div>
       </div>
     </div>
+
+    <!-- 삭제 확인 모달 -->
+    <div
+      class="modal fade show d-block"
+      tabindex="-1"
+      role="dialog"
+      v-if="isDeleteModalVisible"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete Confirmation</h5>
+            <button
+              type="button"
+              class="btn-close"
+              @click="cancelDelete"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p v-if="deletingType === 'category'">
+              Are you sure you want to delete this category?
+            </p>
+            <p v-if="deletingType === 'subcategory'">
+              Are you sure you want to delete this subcategory?
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              @click="cancelDelete"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              @click="deleteConfirmed"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
+import CategoryList from "./CategoryList.vue";
+import SubCategoryList from "./SubCategoryList.vue";
+
+// 더미 데이터
+const categories = ref([
+  {
+    id: 2,
+    name: "Clothing",
+    subCategories: [
+      { id: 1, name: "Pants" },
+      { id: 2, name: "Sportswear" },
+      { id: 3, name: "Accessories" },
+    ],
+  },
+  {
+    id: 3,
+    name: "Furniture",
+    subCategories: [
+      { id: 1, name: "Chair" },
+      { id: 2, name: "Table" },
+      { id: 3, name: "Bottoms" },
+    ],
+  },
+  {
+    id: 4,
+    name: "Electronics",
+    subCategories: [
+      { id: 1, name: "TV" },
+      { id: 2, name: "Cameras" },
+      { id: 3, name: "Smartphones" },
+    ],
+  },
+]);
+
+const selectedCategory = ref(null);
+const categoryToDelete = ref(null); // 삭제할 카테고리 ID 저장
+const subCategoryToDelete = ref(null); // 삭제할 서브 카테고리 ID 저장
+const deletingType = ref(""); // 삭제하는 타입을 구분 (category/subcategory)
+const isDeleteModalVisible = ref(false); // 모달 표시 여부
+
+// 카테고리 선택
+const selectCategory = (category) => {
+  selectedCategory.value = category;
+};
+
+// 카테고리 추가
+const addCategory = () => {
+  const newCategory = { id: Date.now(), name: "New Category" };
+  categories.value.push(newCategory);
+};
+
+// 카테고리 수정
+const updateCategory = (id, newName) => {
+  const category = categories.value.find((cat) => cat.id === id);
+  if (category) {
+    category.name = newName;
+  }
+};
+
+// 서브 카테고리 추가
+const addSubCategory = () => {
+  if (selectedCategory.value) {
+    if (!selectedCategory.value.subCategories) {
+      selectedCategory.value.subCategories = [];
+    }
+    selectedCategory.value.subCategories.push({
+      id: Date.now(),
+      name: "New Sub-category",
+    });
+  }
+};
+
+// 서브 카테고리 수정
+const updateSubCategory = (subCategoryId, newName) => {
+  if (selectedCategory.value && selectedCategory.value.subCategories) {
+    const subCategory = selectedCategory.value.subCategories.find(
+      (sub) => sub.id === subCategoryId
+    );
+    if (subCategory) {
+      subCategory.name = newName;
+    }
+  }
+};
+
+// 서브 카테고리 삭제 확인 모달 열기
+const confirmDeleteSubCategory = (subCategoryId) => {
+  subCategoryToDelete.value = subCategoryId;
+  deletingType.value = "subcategory";
+  isDeleteModalVisible.value = true;
+};
+
+// 카테고리 삭제 확인 모달 열기
+const confirmDeleteCategory = (id) => {
+  categoryToDelete.value = id;
+  deletingType.value = "category";
+  isDeleteModalVisible.value = true;
+};
+
+// 모달에서 삭제 확정
+const deleteConfirmed = () => {
+  if (deletingType.value === "category") {
+    categories.value = categories.value.filter(
+      (cat) => cat.id !== categoryToDelete.value
+    );
+    if (
+      selectedCategory.value &&
+      selectedCategory.value.id === categoryToDelete.value
+    ) {
+      selectedCategory.value = null;
+    }
+    categoryToDelete.value = null;
+  } else if (deletingType.value === "subcategory" && selectedCategory.value) {
+    selectedCategory.value.subCategories =
+      selectedCategory.value.subCategories.filter(
+        (sub) => sub.id !== subCategoryToDelete.value
+      );
+    subCategoryToDelete.value = null;
+  }
+  isDeleteModalVisible.value = false;
+  deletingType.value = "";
+};
+
+// 삭제 취소
+const cancelDelete = () => {
+  isDeleteModalVisible.value = false;
+  categoryToDelete.value = null;
+  subCategoryToDelete.value = null;
+  deletingType.value = "";
+};
 </script>
 
 <style scoped>
@@ -256,36 +261,28 @@
   width: 120px;
 }
 
-.card {
-  border-radius: 0;
-  height: 40px;
-}
-
 .admin-content {
   flex-grow: 1;
+}
+
+.custom-border {
+  border-right: 1px solid #dee2e6;
+}
+
+.category-title {
+  padding-left: 15px;
 }
 
 .custom-card .card-body {
   padding: 0.5rem 1rem;
 }
 
-.btn {
-  line-height: 1;
+.modal {
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-/* 컬럼 사이에 수직선을 추가 */
-.custom-border {
-  border-right: 1px solid #dee2e6;
-}
-
-/* 각 컬럼의 내용을 왼쪽 정렬 */
-.col-md-4 > div {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Category 제목 스타일 */
-.category-title {
-  padding-left: 15px;
+.modal-dialog {
+  margin-top: 10%;
 }
 </style>
