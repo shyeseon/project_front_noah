@@ -17,7 +17,7 @@
             <!-- 두 번째 컬럼을 위한 빈 공간 -->
             <div class="col-md-4"></div>
           </div>
-          
+
           <div class="row gx-5 mt-4">
             <!-- 첫 번째 컬럼 -->
             <div class="col-md-4 custom-border">
@@ -234,8 +234,7 @@
   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
 .content-wrapper {
