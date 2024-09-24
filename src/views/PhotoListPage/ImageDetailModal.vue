@@ -15,12 +15,12 @@
               </div>
             </div>
 
-            <button class="carousel-control-prev prevIcon"  type="button" data-bs-target="#imageCarousel"  data-bs-slide="prev">
+            <button class="carousel-control-prev prevIcon"  type="button" data-bs-target="#imageCarousel"  data-bs-slide="prev" >
               <i class="fa-solid fa-angle-left fs-1 fw-bold"></i>
               <span class="visually-hidden">Prev</span>
             </button>
 
-            <button class="carousel-control-next nextIcon"  type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+            <button class="carousel-control-next nextIcon"  type="button" data-bs-target="#imageCarousel" data-bs-slide="next" >
               <i class="fa-solid fa-chevron-right fs-1 fw-bold"></i>
               <span class="visually-hidden">Next</span>
             </button>
@@ -41,8 +41,7 @@
 import {  onMounted, ref, watch } from 'vue';
 
 let ModalClose=null;
-let nextIcon=null;
-let prevIcon=null;
+
 onMounted(() => {
   ModalClose = document.querySelector(".closeBtn");
   ModalClose.addEventListener("click", CarouselReset);
