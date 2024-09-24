@@ -1,6 +1,14 @@
 <template>
   <div class="photo-gallery">
-    <h2 class="h4 mb-5 mt-4">Models / Automobiles /</h2>
+    <div class="d-flex flex-wrap  mb-5 mt-4">
+  <div v-for="category in subCategory" :key="category.index">
+    <button @click="selectedCategory(category.cName)" class="btn border-0 p-2">
+      <h4 class="mb-0">{{ category.cName }}
+      <span v-if="category.index !== subCategory.length"> / </span>
+      </h4>
+    </button>
+  </div>
+</div>
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
       <div v-for="photo in displayedImages" :key="photo.id" class="col">
         <RouterLink :to="`./ListPage/DetailList.vue?id=${photo.id}`" class="card h-100 border-0 text-decoration-none">
@@ -21,7 +29,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import InfiniteScroll from "@/components/InfiniteScroll.vue";
 //dummy data
 const photos = ref([
@@ -152,8 +160,35 @@ const photos = ref([
     src: "https://www.davehillphoto.com/images/pics/1536/17145_BOBsQQ_corolla_cross_890b_08732_0031_santee_court_rear_3_4_lifestyle_004846.jpg",
   },
 ]);
+
+const subCategory = ref([
+  {index:1,
+  cName:"Ian"
+  },
+  {index:2,
+  cName:"minkyueng"
+  },
+  {index:3,
+  cName:"leek"
+  },
+  {index:4,
+  cName:"hyeseon"
+  },
+
+])
 const { displayedImages, isLoading, allLoaded, observerTarget } = InfiniteScroll(photos, 9);
 
+const selectCategory= ref(null);
+
+const selectedCategory = (categoryName) => {
+  selectCategory.value = categoryName;
+  if (selectCategory.value === "") {
+    console.log("none")
+  } else {
+    console.log("category"+selectCategory.value)
+  }
+};
+  
 
 
 </script>
