@@ -67,11 +67,12 @@
   emailConfirmationModal = new Modal(document.getElementById("emailModal"));
   });
 
+  // 이메일 작성 폼 
   const userInfo = ref({
     name: "",
     email: "",
     message: ""
-  })
+  });
 
   // emailJs
   const sendEmail = () => {
