@@ -8,7 +8,7 @@
             class="img-fluid"
           />
         </div>
-        <div class="col-md-5 ms-3">
+        <div class="col-md-5">
           <form ref="form" @submit.prevent="sendEmail">
             <h5 class="text-muted mb-4 mt-2">CONTACT</h5>
             <div class="mb-4">
