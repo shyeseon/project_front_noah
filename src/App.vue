@@ -1,13 +1,13 @@
 <template>
   <!-- 데스크탑 화면에서는 flex 레이아웃 유지 -->
   <div class="layout-container d-none d-md-flex">
-    <Sidebar v-if="!check" />
-    <AdminSidebar v-if="check"/>
+    <Sidebar v-if="!isLoginPage && !check" />
+    <AdminSidebar v-if="!isLoginPage && check"/>
     <router-view />
   </div>
 
   <!-- 모바일 화면에서는 상단에 Minography 제목과 햄버거 버튼 표시 -->
-  <nav class="navbar d-md-none navbar-light bg-light">
+  <nav class="navbar d-md-none navbar-light bg-light" v-if="!check">
     <div class="container-fluid">
       <h1 class="navbar-brand mb-0 h1 fw-bold">Minography</h1>
       <button
@@ -23,7 +23,7 @@
   </nav>
 
   <!-- 오프캔버스 사이드바 (모바일 화면에서만 사용) -->
-  <div
+  <div v-if="!check"
     class="offcanvas offcanvas-start"
     tabindex="-1"
     id="offcanvasSidebar"
@@ -56,6 +56,7 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const check = ref(false);
 const url = ref("");
+const isLoginPage = ref(false); // 로그인 페이지 여부
 
 watch(
   () => (url.value = route.path),
@@ -64,6 +65,13 @@ watch(
       check.value = true;
     } else {
       check.value = false;
+    }
+
+    // login이면 사이드바 숨기기
+    if (newUrl.includes("/Login")) {
+      isLoginPage.value = true;
+    } else {
+      isLoginPage.value = false;
     }
   }
 );
