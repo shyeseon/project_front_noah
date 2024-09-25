@@ -44,9 +44,7 @@
   </div>
 
   <!-- 모바일 화면에서도 콘텐츠가 표시되도록 router-view -->
-  <div class="d-md-none">
-    <router-view />
-  </div>
+ 
 </template>
 
 <script setup>
