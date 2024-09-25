@@ -1,5 +1,5 @@
 <template>
-  <nav class="sidebar">
+  <nav class="sidebar sticky-top">
     <div class="position-sticky pt-3 ms-4 me-5">
       <h1 class="h2 mb-5 fw-bold">
         <RouterLink class="text-decoration-none text-dark" to="/"
