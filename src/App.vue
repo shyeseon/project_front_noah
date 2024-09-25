@@ -1,7 +1,7 @@
 <template>
   <div class="layout-container">
     <!-- 로그인 페이지가 아닐 때 사이드바 표시 -->
-    <div v-if="!isLoginPage" class="sidebar d-none d-md-block">
+    <div v-if="!isLoginPage" class="sidebar-part d-none d-md-block">
       <Sidebar v-if="!check" />
       <AdminSidebar v-if="check" />
     </div>
