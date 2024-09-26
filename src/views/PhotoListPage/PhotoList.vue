@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import {  ref } from "vue";
 import InfiniteScroll from "@/components/InfiniteScroll.vue";
 //dummy data
 const photos = ref([
