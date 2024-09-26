@@ -22,6 +22,7 @@
 
               <input
                 v-bind="getThumbnailInputProps()"
+                accept="image/*"
                 type="file"
                 style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0; cursor: pointer;"
               />
@@ -94,6 +95,7 @@
             <p>Drag Files to upload Or Click to Select Files</p>
             <input
                 v-bind="getImagesInputProps()"
+                accept="image/*"
                 type="file"
                 style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0; cursor: pointer;"
               />
@@ -102,6 +104,11 @@
         <div class="col-md-6">
           <div class="p-3" style="height: 400px; overflow-y: auto;">
             <div>
+              <div class="form-group d-flex align-items-center justify-content-center">
+                <div v-if="fileInfos.length === 0">
+                  <h4 class="mb-0">Please insert an image</h4>
+                </div>
+              </div>
               <div class="mb-3" v-for="(file, index) in fileInfos" :key="file.name">
                 <div class="d-flex justify-content-between align-items-center mb-1">
                   <div class="d-flex align-items-center flex-grow-1 me-3">
@@ -122,6 +129,7 @@
                   <span>{{ file.speed }}</span>
                   <span>{{ file.type }}</span>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -147,12 +155,6 @@ const deleteImage = () => {
   imageSrc.value = null;
   // 필요하다면 파일 입력을 초기화하는 로직을 여기에 추가하세요
 }
-
-const uploadingFiles = ref([
-  { name: 'Photo.png', size: '7.5 mb', progress: 37, status: '37% done', speed: '90KB/sec' },
-  { name: 'Task.doc', size: '2 mb', progress: 65, status: '65% done', speed: '120KB/sec' },
-  { name: 'Dashboard.png', size: '1.4 mb', progress: 100, status: 'Completed', speed: '' }
-]);
 
 const changeMB = (size) => {
   size = ((size/1024)/1024);
@@ -186,9 +188,11 @@ const onDrop = (acceptedFiles, rejectReasons) => {
   if (rejectReasons > 0 ) {
     console.log('rejectReasons', rejectReasons) // 거부된 파일의 이유들이 들어감
   }
-  if (acceptedFiles.length > 0) {
+  if (acceptedFiles.length > 0 &&acceptedFiles[0].type.startsWith('image/')) {
     // 첫 번째 파일만 처리하기 위해서 배열에서 첫번째 인덱스만 매개변수로 보냄
     FirstFileUpload(acceptedFiles[0]); 
+  } else {
+    alert('Only image files can be uploaded.');
   }
 }
 
@@ -208,12 +212,20 @@ const { getRootProps : getThumbnailProps,
 const onDrops = (acceptedFiles, rejectReasons) => {
   console.log("실행 onDrops")
   console.log('acceptedFiles', acceptedFiles) // 드롭된 유효한 파일들의 목록
-  if (rejectReasons > 0 ) {
+  if (rejectReasons.length > 0 ) {
     console.log('rejectReasons', rejectReasons) // 거부된 파일의 이유들이 들어감
   }
-  if (acceptedFiles.length > 0) {
-    // 배열 자체를 전달함
-    MultiFileUpload(acceptedFiles); 
+  if (acceptedFiles.length > 0 ) {
+    const imageFiles = acceptedFiles.filter(file =>
+      file.type.startsWith('image/')); // image 타입만 다시 넣은 배열로 만듬
+      if(imageFiles.length === acceptedFiles.length){
+         // 배열 자체를 전달함
+        MultiFileUpload(imageFiles); 
+      } else {
+        alert('Only image files can be uploaded.');
+      }
+    
+   
   }
 };
 
@@ -227,23 +239,11 @@ const { getRootProps : getImagesProps,
 
 // 드롭존 설정 및 파일 업로드 함수
 const MultiFileUpload = (files) => {
-  console.log(files);
 
-  // // 이후에 파일 전달을 위한 코드
-  // const formData = new FormData()
-  // for (let i = 0; i < files.length; i++) {
-  //   formData.append('images[]', files[i])
-  // }
-
-
-  for(let i = 0; i < files.length; i++){
-    const file = files[i];
-
-    if(file instanceof File){ // file이 File 객체 타입인지 확인
-    const reader = new FileReader();
-    
-    // 로딩이 완료되면 실행
-    reader.onloadend = () => { // 파일 읽기가 완료되면 콜백되는 함수
+  // for문을 사용
+    files.forEach(file =>{
+      const reader = new FileReader();
+      reader.onloadend = () => { // 파일 읽기가 완료되면 콜백되는 함수
       const base64 = reader.result; // 읽은 값을 얻을 수 있음
       console.log("base64", base64); // Base64 데이터 
       fileInfos.value.push({
@@ -252,15 +252,13 @@ const MultiFileUpload = (files) => {
         size: changeMB(file.size),
         type: file.type
       });
+     };
 
-       
-  };
     // 비동기적으로 읽기 시작 base64 -> URL로 변환 
     reader.readAsDataURL(file); // 파일을 Base64로 인코딩 -> 인코딩되면 위의 onload 실행
     console.log(reader); // FileReader 객체 출력
  
-    }
-  }
+  });
 };
 
 </script>
