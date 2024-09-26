@@ -11,6 +11,7 @@
               <div class="carousel-item" :class="{ active: index === currentIndex }" v-for="(image, index) in props.objectProp" :key="index">
                 <img :src="image.src" :alt="image.alt"  class="d-block w-100 detailImage" 
                   @click="handleZoom(index)"
+                  :class="{ 'zoomed': magnify }"
                   >       
               </div>
             </div>
@@ -52,29 +53,28 @@ const emit=defineEmits(['close']);
 
 const props = defineProps(['objectProp','selectedIndex']);
 const currentIndex = ref(props.selectedIndex);
-
-
-let nowZoom = 100;
+const nowZoom = ref(100);
 let magnify = ref(false);
 
 function handleZoom(index){
   let elements = document.querySelectorAll(".detailImage"); 
   if(!magnify.value){
-    nowZoom = nowZoom + 50;
+    nowZoom.value = nowZoom.value + 50;
     magnify.value=!magnify.value;
   }else{
-    nowZoom = 100;
+    nowZoom.value = 100;
     magnify.value=!magnify.value;
+    
   }
-  elements[index].style.zoom = nowZoom + "%"; 
+  elements[index].style.zoom = nowZoom.value + "%"; 
 }
 
 function CarouselReset(){
-  nowZoom = 100;
   magnify.value = false;
   let elements = document.querySelectorAll(".detailImage");
   elements.forEach(element => {
     element.style.zoom = "100%";
+    
   });
 }
 
@@ -99,6 +99,10 @@ watch(() => props.selectedIndex, (newValue) => {
   height: 80vh;
   cursor: zoom-in;
 }
+.carousel-item img.zoomed {
+  cursor:zoom-out;
+}
+
 .modal{
   backdrop-filter:brightness(0.5) ;
 }
