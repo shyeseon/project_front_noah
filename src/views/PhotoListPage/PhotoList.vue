@@ -176,7 +176,7 @@ const subCategory = ref([
   },
 
 ])
-const { displayedImages, isLoading, allLoaded, observerTarget } = InfiniteScroll(photos, 9);
+const { displayedImages, isLoading, allLoaded, observerTarget } = InfiniteScroll(photos, 12);
 
 const selectCategory= ref(null);
 

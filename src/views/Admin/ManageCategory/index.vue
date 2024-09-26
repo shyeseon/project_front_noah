@@ -35,7 +35,6 @@
                 @addCategory="addCategory"
                 @updateCategory="updateCategory"
                 @deleteCategory="confirmDeleteCategory"
-                @moveCategory="moveCategory"
               />
             </div>
 
@@ -45,7 +44,6 @@
                 @addSubCategory="addSubCategory"
                 @updateSubCategory="updateSubCategory"
                 @deleteSubCategory="confirmDeleteSubCategory"
-                @moveSubCategory="moveSubCategory"
               />
             </div>
           </div>

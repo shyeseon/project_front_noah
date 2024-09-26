@@ -17,9 +17,9 @@
           
         </masonry-wall>     
      
-        <div ref="observerTarget" class="w-100"></div>
+        <div ref="observerTarget" class="w-100 h-auto"></div>
         <!-- 데스크탑에서는 기존 모달 사용 -->
-        <ImageDetailModal v-if="!isMobile" id="ImageDetailmodal" @close="closeModal" :objectProp="listImages" :selectedIndex="currentSlideIndex" :key="index"
+        <ImageDetailModal v-if="!isMobile" id="ImageDetailmodal" @close="closeModal" :objectProp="listImages" :selectedIndex="currentSlideIndex"
         />
   
         <!-- 모바일에서는 Swiper 모달 사용 -->
@@ -100,9 +100,9 @@
 
   onMounted(() => {
     
+    preloadImages();
     if (!isMobile.value) {
       ImageDetailmodal = new Modal(document.querySelector("#ImageDetailmodal"));
-      preloadImages();
     }
   });
 
