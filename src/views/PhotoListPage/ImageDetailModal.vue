@@ -25,7 +25,7 @@
                 </button>
 
                 <div class= "border-0">
-                  <div class="text-center mt-4 text-white fs-6" >{{index+1}}/ 16</div>
+                  <div class="text-center mt-4 text-white fs-6" >{{index+1}}/ {{props.objectProp.length-1}}</div>
                 </div>
 
               </div>
@@ -46,7 +46,7 @@ let ModalClose=null;
 const emit=defineEmits(['close']);
 onMounted(() => {
   ModalClose = document.querySelector(".closeBtn");
-  ModalClose.addEventListener("click", ()=> imageReset(currentIndex.value));
+  ModalClose.addEventListener("click", allReset);
 
 });
 
@@ -86,8 +86,19 @@ const imageReset= (index)=>{
   }
 }
 
+const allReset= () => {
+  for (let index in imageStates.value) {
+    if (imageStates.value[index]) {
+      imageStates.value[index].magnify = false;
+      const element = document.querySelectorAll(".detailImage")[index];
+      element.style.zoom = "100%";
+    }
+  }
+}
+
 watch(() => props.selectedIndex, (newValue) => {
   currentIndex.value = newValue;
+  allReset();
 });
 
 </script>
